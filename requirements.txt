@@ -1,18 +1,5 @@
-# AI Agent API
-
-Simple FastAPI service that exposes an endpoint to interact with an LLM.
-Designed to be used by workflow tools like n8n or any frontend/client.
-
-## Features
-- Async FastAPI endpoint
-- LLM interaction via OpenAI API
-- Timeout and retry handling
-- Structured logging
-- JSON-based contract
-
-## Setup
-
-```bash
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+fastapi
+uvicorn
+openai
+python-dotenv
+pydantic

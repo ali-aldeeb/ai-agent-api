@@ -21,13 +21,6 @@ logging.basicConfig(
 # Using name ensures the logger identifies this specific file
 logger = logging.getLogger(__name__)
 
-# ---------- OpenRouter Client ----------
-# We added base_url and your specific key here to connect to OpenRouter
-client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key="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", # Replace with your actual key
-) 
-
 # ---------- Config ----------
 MAX_RETRIES = 3
 TIMEOUT_SECONDS = 20 # Increased to 20s as free models can be slower
