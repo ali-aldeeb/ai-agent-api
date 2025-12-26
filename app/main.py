@@ -33,22 +33,21 @@ async def ask_ai(request: PromptRequest):
     logger.info(f"Received request: {request.prompt[:50]}...") # Log the first 50 chars
 
     try:
-        # Step 1: Send the prompt to our LLM function (which handles retries and OpenRouter)
+        
         ai_answer = await ask_llm(request.prompt)
         
-        # Step 2: Return the answer using the PromptResponse Schema
-        # FastAPI will automatically convert this to JSON for the client
+        
         return PromptResponse(response=ai_answer)
 
     except RuntimeError as e:
-        # Step 3: Catch the escalated error from llm.py and return a clear HTTP error
+        
         logger.error(f"Error in ask_ai: {str(e)}")
         raise HTTPException(
             status_code=502, 
             detail=f"The AI service is currently unavailable. Error: {str(e)}"
         )
     except Exception as e:
-        # Catch any other unexpected errors
+        
         logger.critical(f"Unexpected error: {str(e)}")
         raise HTTPException(
             status_code=500, 
